@@ -25,6 +25,7 @@
 
 1} Library Book Management
 CODE => 
+CREATING TABLE :
    create table Publisher( Name varchar2(20) primary key, Phone integer , Address varchar2(20));
    create table Book(Book_id integer primary key , Title varchar2(20) , Pub_year varchar2(20) , Publisher_name references Publisher (Name) on delete cascade);
    create table Book_Authors(Author_Name varchar2(20) , Book_id references Book (Book_id) on delete cascade , primary key (Book_id,Author_Name));
@@ -32,3 +33,10 @@ CODE =>
    create table Book_Copies(No_Of_copies integer , Book_id references Book (Book_id) on delete cascade , Branch_id references Library_Branch (Branch_id) on delete cascade , primary key (Book_id , Branch_id));
    create table Card (Card_No integer primary key );
    create table Book_Lending( Book_id references Book (Book_id) on delete cascade , Branch_id references Library_Branch (Branch_id) on delete cascade , Card_No references Card (Card_No) on delete cascade  , Date_out integer , Due_date integer, primary key (Book_id,Branch_id,Card_No) );
+
+INSERTING VALUES : 
+    insert into Publisher values ('Luffy' , '98765' , 'East blue');
+    insert into Publisher values ('Zoro' , '67895' , 'West blue');
+    insert into Publisher values ('Sanji' , '98723' , 'Wano kingdom');
+    insert into Publisher values ('Nami' , '32165' , 'Punk Hazzard');
+    insert into Publisher values ('Franky' , '65345' , 'Alabasta');
