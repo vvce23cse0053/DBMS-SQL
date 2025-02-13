@@ -9,6 +9,12 @@
   8} Primary Key => unique indentity 
   9} To find Description of table => desc table_name;
 
+  10}  insert into publisher values('&name' , &phone , '&address');
+       Enter value for name: Brook
+       Enter value for phone: 12345
+       Enter value for address: thriller bark
+       / : forward slash repeat the same insert details;
+
 
 0.1} Key Words:
   1}SELECT - extracts data from a database
@@ -40,3 +46,11 @@ INSERTING VALUES :
     insert into Publisher values ('Sanji' , '98723' , 'Wano kingdom');
     insert into Publisher values ('Nami' , '32165' , 'Punk Hazzard');
     insert into Publisher values ('Franky' , '65345' , 'Alabasta');
+
+   SQL>  insert into Book values  ( &book , '&titile' , '&publish_year' , '&publisher_name');
+      Enter value for book: 1
+      Enter value for titile: pirate king
+      Enter value for publish_year: 1999
+      Enter value for publisher_name: Luffy
+      old   1:  insert into Book values  ( &book , '&titile' , '&publish_year' , '&publisher_name')
+      new   1:  insert into Book values  ( 1 , 'pirate king' , '1999' , 'Luffy')
