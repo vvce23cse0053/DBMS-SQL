@@ -38,7 +38,8 @@ CREATING TABLE :
    create table Library_Branch ( Branch_id integer primary key , Branch_Name varchar2(20) , Address varchar2(50));
    create table Book_Copies(No_Of_copies integer , Book_id references Book (Book_id) on delete cascade , Branch_id references Library_Branch (Branch_id) on delete cascade , primary key (Book_id , Branch_id));
    create table Card (Card_No integer primary key );
-   create table Book_Lending( Book_id references Book (Book_id) on delete cascade , Branch_id references Library_Branch (Branch_id) on delete cascade , Card_No references Card (Card_No) on delete cascade  , Date_out integer , Due_date integer, primary key (Book_id,Branch_id,Card_No) );
+   create table Book_Lending( Book_id references Book (Book_id) on delete cascade , Branch_id references Library_Branch (Branch_id) on delete cascade , Card_No references Card (Card_No) on delete cascade  , 
+     Date_out integer , Due_date integer, primary key (Book_id,Branch_id,Card_No) );
 
 INSERTING VALUES : 
     insert into Publisher values ('Luffy' , '98765' , 'East blue');
@@ -54,3 +55,8 @@ INSERTING VALUES :
       Enter value for publisher_name: Luffy
       old   1:  insert into Book values  ( &book , '&titile' , '&publish_year' , '&publisher_name')
       new   1:  insert into Book values  ( 1 , 'pirate king' , '1999' , 'Luffy')
+
+
+1Q > query :
+   select B.Book_id ,B.Title , P.Name , A.Author_Name ,C.No_Of_copies from Book B, Publisher P, Book_Authors A, Book_Copies C, Library_Branch L
+        where B.Book_id = A.Book_id and B.Book_id = C.Book_id and P.Name = B.Publisher_name and C.Branch_id = L.Branch_id ; 
