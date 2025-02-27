@@ -29,6 +29,17 @@
   10}CREATE INDEX - creates an index (search key)
   11}DROP INDEX - deletes an index
 
+
+0.2} values insertion methods:
+  1> method 1:
+        insert into Book_Authors values('name1' , 1);
+        insert into Book_Authors values('name2' , 2);
+  2> method 2:
+        insert into Book_Authors values('&nmaes' , &number); followed by forward slash(/)
+  3> method 3 :
+        insert into Book_Authors ('name' ,id)
+    values ('name1',1);
+
 1} Library Book Management
 CODE => 
 CREATING TABLE :
@@ -60,3 +71,9 @@ INSERTING VALUES :
 1Q > query :
    select B.Book_id ,B.Title , P.Name , A.Author_Name ,C.No_Of_copies from Book B, Publisher P, Book_Authors A, Book_Copies C, Library_Branch L
         where B.Book_id = A.Book_id and B.Book_id = C.Book_id and P.Name = B.Publisher_name and C.Branch_id = L.Branch_id ; 
+
+2Q> query:
+  select Card_No from Book_Lending where Date_out Between "JAN 2017" and "JUNE 2017" group by Card_No having Count(*) > 3;
+
+3Q> query:
+  delete from  Book where Book_id =3;
