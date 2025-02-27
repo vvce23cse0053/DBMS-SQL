@@ -67,13 +67,24 @@ INSERTING VALUES :
       old   1:  insert into Book values  ( &book , '&titile' , '&publish_year' , '&publisher_name')
       new   1:  insert into Book values  ( 1 , 'pirate king' , '1999' , 'Luffy')
 
+      *>  insert into Book_Authors values ('&Author_Name' , &Book_id );
+      *>  select * from Book_Authors;
+      *>  insert into Library_Branch vales(&Branch_id , '&Branch_Name', '&Address')
+      *>  insert into Book_Copies values(&No_Of_copies , &Book_id , &Branch_id);
+      *>  insert into Card values(&Card_No);
+      *>  insert into Book_Lending values (&Book_id , &Branch_id , &Card_No , '&Date_out' , '&Due_date');
 
 1Q > query :
    select B.Book_id ,B.Title , P.Name , A.Author_Name ,C.No_Of_copies from Book B, Publisher P, Book_Authors A, Book_Copies C, Library_Branch L
         where B.Book_id = A.Book_id and B.Book_id = C.Book_id and P.Name = B.Publisher_name and C.Branch_id = L.Branch_id ; 
 
 2Q> query:
-  select Card_No from Book_Lending where Date_out Between "JAN 2017" and "JUNE 2017" group by Card_No having Count(*) > 3;
+ SELECT Card_No 
+ FROM Book_Lending 
+ WHERE Date_out BETWEEN TO_DATE('11-JAN-2017', 'DD-MON-YYYY') 
+                   AND TO_DATE('12-JUN-2017', 'DD-MON-YYYY')
+ GROUP BY Card_No 
+ HAVING COUNT(*) > 2;
 
 3Q> query:
   delete from  Book where Book_id =3;
