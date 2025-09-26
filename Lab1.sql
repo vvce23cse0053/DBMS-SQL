@@ -1,3 +1,7 @@
+CREATE TABLE:
+  CREATE TABLE DBMS(C011 DATATTYPE(SIZE),);
+
+
 0} Basic Commands :
   1} To create Table => create table table_name(col1 datatype(size) , col2 Integer , col3 varchar(20), .....);
   2} To Insert values into the table => insert into table_name values('col1_data' , 'col2_data' , ' col3_data',....);
